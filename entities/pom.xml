@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>eu.europa.ec</groupId>
+    <artifactId>mdm</artifactId>
+    <version>${revision}</version>
+  </parent>
+
+  <artifactId>entities</artifactId>
+
+  <!-- A jar that will be used as library by core module -->
+  <packaging>jar</packaging>
+  <name>entities</name>
+  <description>eForms Metadata Manager Entities</description>
+
+  <properties>
+  
+  </properties>
+
+  <dependencies>
+
+    <!-- Database access. -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-jooq</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <scope>runtime</scope>
+    </dependency>
+
+
+  </dependencies>
+
+  <build>
+    <resources>
+
+    </resources>
+    <plugins>
+      <!-- Build lifecycle phase 2 initialize -->
+      <!-- Build lifecycle phase 3 generate-sources -->
+      <plugin>
+        <groupId>org.jooq</groupId>
+        <artifactId>jooq-codegen-maven</artifactId>
+        <executions>
+          <execution>
+            <id>jooq-codegen</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+            <configuration>
+              <jdbc>
+                <url>${maven.datasource.url}</url>
+                <user>${spring.datasource.username}</user>
+                <password>${spring.datasource.password}</password>
+                <properties>
+                  <property>
+                    <key>serverTimezone</key>
+                    <value>CET</value>
+                  </property>
+                </properties>
+              </jdbc>
+              <generator>
+                <name>org.jooq.codegen.JavaGenerator</name>
+                <database>
+                  <inputCatalog></inputCatalog>
+                  <includes>tedcvsrepo.*</includes>
+                  <excludes>pma__.*</excludes>
+                  <forcedTypes>
+                    <forcedType>
+                      <name>BOOLEAN</name>
+                      <includeTypes>(?i:TINYINT\(1\))</includeTypes>
+                    </forcedType>
+                  </forcedTypes>
+                </database>
+                <generate>
+                  <!-- Avoids CRLF line ending issues in JOOQ generated files, we want LF in the Java repo. -->
+                  <!-- https://www.jooq.org/doc/3.0/manual/code-generation/codegen-advanced/codegen-config-generate/codegen-whitespace/ -->
+                  <indentation>\s\s</indentation>
+                  <newline>\n</newline>
+                  <daos>true</daos>
+                  <pojos>true</pojos>
+                  <javaTimeTypes>true</javaTimeTypes>
+                  <interfaces>true</interfaces>
+                  <springAnnotations>true</springAnnotations>
+                </generate>
+                <target>
+                  <packageName>eu.europa.ec.mdm.generated
+                  </packageName>
+                  <!-- NO: instead it will go to target folder -->
+                  <!-- <directory>src/main/java/</directory> -->
+                </target>
+              </generator>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+    </plugins>
+    </build>
+
+
+</project>
