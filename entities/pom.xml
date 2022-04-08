@@ -30,7 +30,11 @@
       <artifactId>mysql-connector-java</artifactId>
       <scope>runtime</scope>
     </dependency>
-
+    <!-- Jackson optional module:Java 8 Date/time -->
+    <dependency>
+      <groupId>com.fasterxml.jackson.datatype</groupId>
+      <artifactId>jackson-datatype-jsr310</artifactId>
+    </dependency>
 
   </dependencies>
 
@@ -74,6 +78,12 @@
                       <name>BOOLEAN</name>
                       <includeTypes>(?i:TINYINT\(1\))</includeTypes>
                     </forcedType>
+<!--                     <forcedType> -->
+<!--                       Specify the Java type of your custom type. This corresponds to the Converter's <U> type. -->
+<!--                       <userType>java.time.LocalDate</userType> -->
+<!--                       Associate that custom type with your converter. -->
+<!--                       <converter>eu.europa.ec.mdm.jooq.LocalDateConverter</converter> -->
+<!--                     </forcedType> -->
                   </forcedTypes>
                 </database>
                 <generate>
@@ -100,7 +110,7 @@
       </plugin>
 
     </plugins>
-    </build>
+  </build>
 
 
 </project>
