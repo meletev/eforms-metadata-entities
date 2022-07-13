@@ -12,7 +12,7 @@
   <description>eForms Metadata Manager Entities</description>
 
   <properties>
-    <package.name>eu.europa.ec.mdm.generated</package.name>
+    <package.name>eu.europa.ec.mdd.generated</package.name>
 
     <!-- Java -->
     <java.version>11</java.version>
