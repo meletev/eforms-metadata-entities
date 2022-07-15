@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>eu.europa.ec.mdm</groupId>
-    <artifactId>mdm</artifactId>
-    <version>${revision}</version>
-  </parent>
 
+  <groupId>eu.europa.ec.mdd</groupId>
   <artifactId>mdd-entities</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
 
   <!-- A jar that will be used as library by core module -->
   <packaging>jar</packaging>
@@ -16,35 +12,75 @@
   <description>eForms Metadata Manager Entities</description>
 
   <properties>
+    <package.name>eu.europa.ec.mdm.generated</package.name>
+
+    <!-- Java -->
+    <java.version>11</java.version>
+    <maven.compiler.source>${java.version}</maven.compiler.source>
+    <maven.compiler.target>${java.version}</maven.compiler.target>
+
+    <!-- Database -->
+    <datasource.port>3306</datasource.port>
+    <datasource.dbname>tedcvsrepo</datasource.dbname>
+    <datasource.url>jdbc:mysql://${datasource.host}:${datasource.port}/${datasource.dbname}?serverTimezone=CET&amp;allowMultiQueries=true</datasource.url>
+
+    <!-- Dependencies versions -->
+    <version.jooq>3.14.15</version.jooq>
+    <version.spring-boot>2.6.6</version.spring-boot>
+
+    <!-- Plugins versions -->
+    <version.build-helper.plugin>3.3.0</version.build-helper.plugin>
   </properties>
 
-  <dependencies>
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-dependencies</artifactId>
+        <version>${version.spring-boot}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 
-    <!-- Database access. -->
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-jooq</artifactId>
-    </dependency>
+  <dependencies>
     <dependency>
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
       <scope>runtime</scope>
     </dependency>
-    <!-- Jackson optional module:Java 8 Date/time -->
     <dependency>
-      <groupId>com.fasterxml.jackson.datatype</groupId>
-      <artifactId>jackson-datatype-jsr310</artifactId>
+      <groupId>org.jooq</groupId>
+      <artifactId>jooq</artifactId>
     </dependency>
-
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-beans</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+    </dependency>
   </dependencies>
 
   <build>
-    <resources>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>build-helper-maven-plugin</artifactId>
+          <version>${version.build-helper.plugin}</version>
+        </plugin>
+        <plugin>
+          <groupId>org.jooq</groupId>
+          <artifactId>jooq-codegen-maven</artifactId>
+          <version>${version.jooq}</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
 
-    </resources>
     <plugins>
-      <!-- Build lifecycle phase 2 initialize -->
-      <!-- Build lifecycle phase 3 generate-sources -->
       <plugin>
         <groupId>org.jooq</groupId>
         <artifactId>jooq-codegen-maven</artifactId>
@@ -57,9 +93,9 @@
             </goals>
             <configuration>
               <jdbc>
-                <url>${maven.datasource.url}</url>
-                <user>${spring.datasource.username}</user>
-                <password>${spring.datasource.password}</password>
+                <url>${datasource.url}</url>
+                <user>${datasource.username}</user>
+                <password>${datasource.password}</password>
                 <properties>
                   <property>
                     <key>serverTimezone</key>
@@ -71,7 +107,7 @@
                 <name>org.jooq.codegen.JavaGenerator</name>
                 <database>
                   <inputCatalog></inputCatalog>
-                  <includes>tedcvsrepo.*</includes>
+                  <includes>${datasource.dbname}.*</includes>
                   <excludes>pma__.*</excludes>
                   <forcedTypes>
                     <forcedType>
@@ -92,19 +128,130 @@
                   <springAnnotations>true</springAnnotations>
                 </generate>
                 <target>
-                  <packageName>eu.europa.ec.mdm.generated
-                  </packageName>
-                  <!-- NO: instead it will go to target folder -->
-                  <!-- <directory>src/main/java/</directory> -->
+                  <packageName>${package.name}</packageName>
                 </target>
               </generator>
             </configuration>
           </execution>
         </executions>
       </plugin>
-
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>add-source</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>add-source</goal>
+            </goals>
+            <configuration>
+              <sources>
+                <source>${project.build.directory}/generated-sources/jooq/</source>
+              </sources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
   </build>
 
+  <profiles>
+    <!-- op and localdev profiles used inside op network or for local development -->
+    <profile>
+      <id>op</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <properties>
+        <datasource.host>dramempe.cc.cec.eu.int</datasource.host>
+      </properties>
+    </profile>
 
+    <profile>
+      <id>localdev</id>
+      <properties>
+        <datasource.host>localhost</datasource.host>
+      </properties>
+    </profile>
+
+    <profile>
+      <id>db-docker</id>
+
+      <properties>
+        <!-- Directory with SQL scripts to populate a local database -->
+        <sql.dir>${basedir}/scripts/provisioning/mysql/sql</sql.dir>
+        <mysql.conf.dir>${basedir}/scripts/provisioning/mysql/conf</mysql.conf.dir>
+
+        <datasource.host>localhost</datasource.host>
+        <datasource.port>33306</datasource.port>
+        <datasource.dbname>tedcvsrepo</datasource.dbname>
+        <datasource.url>jdbc:mysql://${datasource.host}:${datasource.port}/${datasource.dbname}?serverTimezone=CET</datasource.url>
+        <datasource.username>builder</datasource.username>
+        <datasource.password>builder</datasource.password>
+      </properties>
+
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>io.fabric8</groupId>
+            <artifactId>docker-maven-plugin</artifactId>
+            <version>0.26.0</version>
+            <executions>
+              <execution>
+                <id>start</id>
+                <phase>initialize</phase>
+                <goals>
+                  <goal>build</goal>
+                  <goal>start</goal>
+                </goals>
+              </execution>
+              <execution>
+                <id>stop</id>
+                <phase>post-integration-test</phase>
+                <goals>
+                  <goal>stop</goal>
+                </goals>
+              </execution>
+            </executions>
+
+            <configuration>
+              <showLogs>true</showLogs>
+              <images>
+                <image>
+                  <alias>database</alias>
+                  <name>mysql</name>
+                  <run>
+                    <ports>
+                      <port>33306:3306</port>
+                    </ports>
+                    <volumes>
+                      <bind>
+                        <volume>${mysql.conf.dir}:/etc/mysql/conf.d</volume>
+                        <volume>${sql.dir}:/docker-entrypoint-initdb.d</volume>
+                      </bind>
+                    </volumes>
+                    <wait>
+                      <tcp>
+                        <ports>
+                          <port>3306</port>
+                        </ports>
+                      </tcp>
+                      <time>120000</time>
+                    </wait>
+                    <env>
+                      <MYSQL_DATABASE>${datasource.dbname}</MYSQL_DATABASE>
+                      <MYSQL_ROOT_PASSWORD>${datasource.password}</MYSQL_ROOT_PASSWORD>
+                      <MYSQL_USER>${datasource.username}</MYSQL_USER>
+                      <MYSQL_PASSWORD>${datasource.password}</MYSQL_PASSWORD>
+                    </env>
+                  </run>
+                </image>
+              </images>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
 </project>
