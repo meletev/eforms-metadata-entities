@@ -12,6 +12,9 @@
   <description>eForms Metadata Manager Entities</description>
 
   <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
     <package.name>eu.europa.ec.mdd.generated</package.name>
 
     <!-- Java -->
