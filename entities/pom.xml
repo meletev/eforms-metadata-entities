@@ -24,7 +24,7 @@
 
     <!-- Database -->
     <datasource.port>3306</datasource.port>
-    <datasource.dbname>tedcvsrepo</datasource.dbname>
+    <datasource.dbname>TEDEFO_ACC_MDD</datasource.dbname>
     <datasource.url>jdbc:mysql://${datasource.host}:${datasource.port}/${datasource.dbname}?serverTimezone=CET&amp;allowMultiQueries=true</datasource.url>
 
     <!-- Dependencies versions -->
