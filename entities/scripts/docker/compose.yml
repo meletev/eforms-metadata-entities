@@ -12,7 +12,7 @@ services:
       - ${HOME}/db_data/mdd:/var/lib/mysql
     restart: always
     environment:
-      MYSQL_DATABASE: tedcvsrepo
+      MYSQL_DATABASE: TEDEFO_ACC_MDD
       MYSQL_ROOT_PASSWORD: tedefo
       MYSQL_USER: tedefo
       MYSQL_PASSWORD: tedefo

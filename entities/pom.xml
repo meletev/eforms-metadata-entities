@@ -188,7 +188,7 @@
 
         <datasource.host>localhost</datasource.host>
         <datasource.port>33306</datasource.port>
-        <datasource.dbname>tedcvsrepo</datasource.dbname>
+        <datasource.dbname>TEDEFO_ACC_MDD</datasource.dbname>
         <datasource.url>jdbc:mysql://${datasource.host}:${datasource.port}/${datasource.dbname}?serverTimezone=CET</datasource.url>
         <datasource.username>builder</datasource.username>
         <datasource.password>builder</datasource.password>
