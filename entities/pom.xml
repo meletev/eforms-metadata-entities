@@ -110,6 +110,7 @@
                 <name>org.jooq.codegen.JavaGenerator</name>
                 <database>
                   <inputCatalog></inputCatalog>
+                  <inputSchema>${datasource.dbname}</inputSchema>
                   <includes>${datasource.dbname}.*</includes>
                   <excludes>pma__.*</excludes>
                   <forcedTypes>
