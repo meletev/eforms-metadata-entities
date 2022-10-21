@@ -118,6 +118,7 @@
                   <inputSchema>${datasource.catalog}</inputSchema>
                   <includes>${datasource.catalog}.*</includes>
                   <excludes>pma__.*</excludes>
+                  <outputSchemaToDefault>true</outputSchemaToDefault>
                   <forcedTypes>
                     <forcedType>
                       <name>BOOLEAN</name>
