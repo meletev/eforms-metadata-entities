@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>eu.europa.ec.mdd</groupId>
+  <groupId>eu.europa.ted.eforms.mdd</groupId>
   <artifactId>mdd-entities</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>1.0.0</version>
 
   <!-- A jar that will be used as library by core module -->
   <packaging>jar</packaging>
@@ -23,7 +24,8 @@
     <maven.compiler.target>${java.version}</maven.compiler.target>
 
     <!-- Database -->
-    <datasource.url>jdbc:mysql://${datasource.host}:${datasource.port}/${datasource.catalog}?serverTimezone=CET&amp;allowMultiQueries=true</datasource.url>
+    <datasource.url>jdbc:mysql://${datasource.host}:${datasource.port}/${datasource.catalog}?serverTimezone=CET&amp;allowMultiQueries=true
+    </datasource.url>
     <datasource.inventory.dir>${basedir}/inventory/database</datasource.inventory.dir>
 
     <!-- Dependencies versions -->
@@ -46,6 +48,20 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
+
+  <distributionManagement>
+    <repository>
+      <id>op-nexus-repo</id>
+      <name>OP Maven Repository</name>
+      <url>https://webgate.ec.europa.eu/CITnet/nexus/content/repositories/op/</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+  </distributionManagement>
 
   <dependencies>
     <dependency>
@@ -181,8 +197,7 @@
       </properties>
     </profile>
 
-    <!-- When an environment is set, this profile configures a target database using an environment-specific file (defined as ${properties.file}.
-        -->
+    <!-- When an environment is set, this profile configures a target database using an environment-specific file (defined as ${properties.file}. -->
     <profile>
       <id>env-based</id>
       <activation>
