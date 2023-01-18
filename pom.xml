@@ -65,32 +65,25 @@
 
   <dependencies>
     <dependency>
-      <groupId>mysql</groupId>
-      <artifactId>mysql-connector-java</artifactId>
-      <scope>runtime</scope>
-    </dependency>
-    <dependency>
       <groupId>org.jooq</groupId>
       <artifactId>jooq</artifactId>
+      <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-beans</artifactId>
+      <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-context</artifactId>
+      <optional>true</optional>
     </dependency>
   </dependencies>
 
   <build>
     <pluginManagement>
       <plugins>
-        <plugin>
-          <groupId>org.codehaus.mojo</groupId>
-          <artifactId>build-helper-maven-plugin</artifactId>
-          <version>${version.build-helper.plugin}</version>
-        </plugin>
         <plugin>
           <groupId>org.jooq</groupId>
           <artifactId>jooq-codegen-maven</artifactId>
@@ -103,86 +96,81 @@
         </plugin>
       </plugins>
     </pluginManagement>
-
-    <plugins>
-      <plugin>
-        <groupId>org.jooq</groupId>
-        <artifactId>jooq-codegen-maven</artifactId>
-        <executions>
-          <execution>
-            <id>jooq-codegen</id>
-            <phase>generate-sources</phase>
-            <goals>
-              <goal>generate</goal>
-            </goals>
-            <configuration>
-              <jdbc>
-                <url>${datasource.url}</url>
-                <user>${datasource.username}</user>
-                <password>${datasource.password}</password>
-                <properties>
-                  <property>
-                    <key>serverTimezone</key>
-                    <value>CET</value>
-                  </property>
-                </properties>
-              </jdbc>
-              <generator>
-                <name>org.jooq.codegen.JavaGenerator</name>
-                <database>
-                  <inputCatalog></inputCatalog>
-                  <inputSchema>${datasource.catalog}</inputSchema>
-                  <includes>${datasource.catalog}.*</includes>
-                  <excludes>pma__.*</excludes>
-                  <outputSchemaToDefault>true</outputSchemaToDefault>
-                  <forcedTypes>
-                    <forcedType>
-                      <name>BOOLEAN</name>
-                      <includeTypes>(?i:TINYINT\(1\))</includeTypes>
-                    </forcedType>
-                  </forcedTypes>
-                </database>
-                <generate>
-                  <!-- Avoids CRLF line ending issues in JOOQ generated files, we want LF in the Java repo. -->
-                  <!-- https://www.jooq.org/doc/3.0/manual/code-generation/codegen-advanced/codegen-config-generate/codegen-whitespace/ -->
-                  <indentation>\s\s</indentation>
-                  <newline>\n</newline>
-                  <daos>true</daos>
-                  <pojos>true</pojos>
-                  <javaTimeTypes>true</javaTimeTypes>
-                  <interfaces>true</interfaces>
-                  <springAnnotations>true</springAnnotations>
-                </generate>
-                <target>
-                  <packageName>${package.name}</packageName>
-                </target>
-              </generator>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>build-helper-maven-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>add-source</id>
-            <phase>generate-sources</phase>
-            <goals>
-              <goal>add-source</goal>
-            </goals>
-            <configuration>
-              <sources>
-                <source>${project.build.directory}/generated-sources/jooq/</source>
-              </sources>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-    </plugins>
   </build>
 
   <profiles>
+    <profile>
+      <id>generate-sources</id>
+      <dependencies>
+        <dependency>
+          <groupId>mysql</groupId>
+          <artifactId>mysql-connector-java</artifactId>
+          <scope>runtime</scope>
+        </dependency>
+      </dependencies>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.jooq</groupId>
+            <artifactId>jooq-codegen-maven</artifactId>
+            <executions>
+              <execution>
+                <id>jooq-codegen</id>
+                <phase>generate-sources</phase>
+                <goals>
+                  <goal>generate</goal>
+                </goals>
+                <configuration>
+                  <jdbc>
+                    <url>${datasource.url}</url>
+                    <user>${datasource.username}</user>
+                    <password>${datasource.password}</password>
+                    <properties>
+                      <property>
+                        <key>serverTimezone</key>
+                        <value>CET</value>
+                      </property>
+                    </properties>
+                  </jdbc>
+                  <generator>
+                    <name>org.jooq.codegen.JavaGenerator</name>
+                    <database>
+                      <inputCatalog></inputCatalog>
+                      <inputSchema>${datasource.catalog}</inputSchema>
+                      <includes>${datasource.catalog}.*</includes>
+                      <excludes>pma__.*</excludes>
+                      <outputSchemaToDefault>true</outputSchemaToDefault>
+                      <forcedTypes>
+                        <forcedType>
+                          <name>BOOLEAN</name>
+                          <includeTypes>(?i:TINYINT\(1\))</includeTypes>
+                        </forcedType>
+                      </forcedTypes>
+                    </database>
+                    <generate>
+                      <!-- Avoids CRLF line ending issues in JOOQ generated files, we want LF in the Java repo. -->
+                      <!-- https://www.jooq.org/doc/3.0/manual/code-generation/codegen-advanced/codegen-config-generate/codegen-whitespace/ -->
+                      <indentation>\s\s</indentation>
+                      <newline>\n</newline>
+                      <daos>true</daos>
+                      <pojos>true</pojos>
+                      <javaTimeTypes>true</javaTimeTypes>
+                      <interfaces>true</interfaces>
+                      <springAnnotations>true</springAnnotations>
+                    </generate>
+                    <target>
+                      <directory>${project.basedir}/src/main/java</directory>
+                      <packageName>${package.name}</packageName>
+                    </target>
+                  </generator>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
     <!-- OP and profiles used inside OP network -->
     <profile>
       <id>op</id>
