@@ -43,6 +43,16 @@ public interface IDocumentType extends Serializable {
    */
   public String getRootElement();
 
+  /**
+   * Setter for <code>document_type.schema_location</code>. Location of the main xsd file relative to the SDK root folder, no slash at start
+   */
+  public void setSchemaLocation(String value);
+
+  /**
+   * Getter for <code>document_type.schema_location</code>. Location of the main xsd file relative to the SDK root folder, no slash at start
+   */
+  public String getSchemaLocation();
+
   // -------------------------------------------------------------------------
   // FROM and INTO
   // -------------------------------------------------------------------------

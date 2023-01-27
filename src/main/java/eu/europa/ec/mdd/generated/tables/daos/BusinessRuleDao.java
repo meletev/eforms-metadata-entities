@@ -6,6 +6,7 @@ package eu.europa.ec.mdd.generated.tables.daos;
 
 import eu.europa.ec.mdd.generated.enums.BusinessRuleContext;
 import eu.europa.ec.mdd.generated.enums.BusinessRuleSeverity;
+import eu.europa.ec.mdd.generated.enums.BusinessRuleTarget;
 import eu.europa.ec.mdd.generated.enums.BusinessRuleType;
 import eu.europa.ec.mdd.generated.tables.BusinessRule;
 import eu.europa.ec.mdd.generated.tables.records.BusinessRuleRecord;
@@ -302,6 +303,20 @@ public class BusinessRuleDao extends DAOImpl<BusinessRuleRecord, eu.europa.ec.md
    */
   public List<eu.europa.ec.mdd.generated.tables.pojos.BusinessRule> fetchByStage(Integer... values) {
     return fetch(BusinessRule.BUSINESS_RULE.STAGE, values);
+  }
+
+  /**
+   * Fetch records that have <code>target BETWEEN lowerInclusive AND upperInclusive</code>
+   */
+  public List<eu.europa.ec.mdd.generated.tables.pojos.BusinessRule> fetchRangeOfTarget(BusinessRuleTarget lowerInclusive, BusinessRuleTarget upperInclusive) {
+    return fetchRange(BusinessRule.BUSINESS_RULE.TARGET, lowerInclusive, upperInclusive);
+  }
+
+  /**
+   * Fetch records that have <code>target IN (values)</code>
+   */
+  public List<eu.europa.ec.mdd.generated.tables.pojos.BusinessRule> fetchByTarget(BusinessRuleTarget... values) {
+    return fetch(BusinessRule.BUSINESS_RULE.TARGET, values);
   }
 
   /**

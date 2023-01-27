@@ -18,7 +18,7 @@ import org.jooq.ForeignKey;
 import org.jooq.Index;
 import org.jooq.Name;
 import org.jooq.Record;
-import org.jooq.Row15;
+import org.jooq.Row16;
 import org.jooq.Schema;
 import org.jooq.Table;
 import org.jooq.TableField;
@@ -75,6 +75,11 @@ public class Field extends TableImpl<FieldRecord> {
    * The column <code>field.type</code>.
    */
   public final TableField<FieldRecord, FieldType> TYPE = createField(DSL.name("type"), SQLDataType.VARCHAR(17).nullable(false).asEnumDataType(eu.europa.ec.mdd.generated.enums.FieldType.class), this, "");
+
+  /**
+   * The column <code>field.preset_value</code>.
+   */
+  public final TableField<FieldRecord, String> PRESET_VALUE = createField(DSL.name("preset_value"), SQLDataType.VARCHAR(1024), this, "");
 
   /**
    * The column <code>field.id_schemes</code>.
@@ -228,11 +233,11 @@ public class Field extends TableImpl<FieldRecord> {
   }
 
   // -------------------------------------------------------------------------
-  // Row15 type methods
+  // Row16 type methods
   // -------------------------------------------------------------------------
 
   @Override
-  public Row15<String, String, String, String, FieldType, String, UInteger, String, Boolean, Boolean, FieldPrivacyCode, String, String, String, String> fieldsRow() {
-    return (Row15) super.fieldsRow();
+  public Row16<String, String, String, String, FieldType, String, String, UInteger, String, Boolean, Boolean, FieldPrivacyCode, String, String, String, String> fieldsRow() {
+    return (Row16) super.fieldsRow();
   }
 }

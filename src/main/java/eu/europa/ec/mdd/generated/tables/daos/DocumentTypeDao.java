@@ -90,4 +90,18 @@ public class DocumentTypeDao extends DAOImpl<DocumentTypeRecord, eu.europa.ec.md
   public List<eu.europa.ec.mdd.generated.tables.pojos.DocumentType> fetchByRootElement(String... values) {
     return fetch(DocumentType.DOCUMENT_TYPE.ROOT_ELEMENT, values);
   }
+
+  /**
+   * Fetch records that have <code>schema_location BETWEEN lowerInclusive AND upperInclusive</code>
+   */
+  public List<eu.europa.ec.mdd.generated.tables.pojos.DocumentType> fetchRangeOfSchemaLocation(String lowerInclusive, String upperInclusive) {
+    return fetchRange(DocumentType.DOCUMENT_TYPE.SCHEMA_LOCATION, lowerInclusive, upperInclusive);
+  }
+
+  /**
+   * Fetch records that have <code>schema_location IN (values)</code>
+   */
+  public List<eu.europa.ec.mdd.generated.tables.pojos.DocumentType> fetchBySchemaLocation(String... values) {
+    return fetch(DocumentType.DOCUMENT_TYPE.SCHEMA_LOCATION, values);
+  }
 }

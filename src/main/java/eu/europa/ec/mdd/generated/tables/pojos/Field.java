@@ -24,6 +24,7 @@ public class Field implements IField {
   private String           description;
   private String           relativePath;
   private FieldType        type;
+  private String           presetValue;
   private String           idSchemes;
   private UInteger         maxLength;
   private String           parentNodeId;
@@ -43,6 +44,7 @@ public class Field implements IField {
     this.description = value.getDescription();
     this.relativePath = value.getRelativePath();
     this.type = value.getType();
+    this.presetValue = value.getPresetValue();
     this.idSchemes = value.getIdSchemes();
     this.maxLength = value.getMaxLength();
     this.parentNodeId = value.getParentNodeId();
@@ -61,6 +63,7 @@ public class Field implements IField {
     String           description,
     String           relativePath,
     FieldType        type,
+    String           presetValue,
     String           idSchemes,
     UInteger         maxLength,
     String           parentNodeId,
@@ -77,6 +80,7 @@ public class Field implements IField {
     this.description = description;
     this.relativePath = relativePath;
     this.type = type;
+    this.presetValue = presetValue;
     this.idSchemes = idSchemes;
     this.maxLength = maxLength;
     this.parentNodeId = parentNodeId;
@@ -167,6 +171,22 @@ public class Field implements IField {
   @Override
   public void setType(FieldType type) {
     this.type = type;
+  }
+
+  /**
+   * Getter for <code>field.preset_value</code>.
+   */
+  @Override
+  public String getPresetValue() {
+    return this.presetValue;
+  }
+
+  /**
+   * Setter for <code>field.preset_value</code>.
+   */
+  @Override
+  public void setPresetValue(String presetValue) {
+    this.presetValue = presetValue;
   }
 
   /**
@@ -338,6 +358,7 @@ public class Field implements IField {
     sb.append(", ").append(description);
     sb.append(", ").append(relativePath);
     sb.append(", ").append(type);
+    sb.append(", ").append(presetValue);
     sb.append(", ").append(idSchemes);
     sb.append(", ").append(maxLength);
     sb.append(", ").append(parentNodeId);
@@ -364,6 +385,7 @@ public class Field implements IField {
     setDescription(from.getDescription());
     setRelativePath(from.getRelativePath());
     setType(from.getType());
+    setPresetValue(from.getPresetValue());
     setIdSchemes(from.getIdSchemes());
     setMaxLength(from.getMaxLength());
     setParentNodeId(from.getParentNodeId());

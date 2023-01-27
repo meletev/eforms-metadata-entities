@@ -6,6 +6,7 @@ package eu.europa.ec.mdd.generated.tables.pojos;
 
 import eu.europa.ec.mdd.generated.enums.BusinessRuleContext;
 import eu.europa.ec.mdd.generated.enums.BusinessRuleSeverity;
+import eu.europa.ec.mdd.generated.enums.BusinessRuleTarget;
 import eu.europa.ec.mdd.generated.enums.BusinessRuleType;
 import eu.europa.ec.mdd.generated.tables.interfaces.IBusinessRule;
 
@@ -36,6 +37,7 @@ public class BusinessRule implements IBusinessRule {
   private String               description;
   private BusinessRuleSeverity severity;
   private Integer              stage;
+  private BusinessRuleTarget   target;
   private Boolean              draft;
   private String               draftReason;
 
@@ -60,6 +62,7 @@ public class BusinessRule implements IBusinessRule {
     this.description = value.getDescription();
     this.severity = value.getSeverity();
     this.stage = value.getStage();
+    this.target = value.getTarget();
     this.draft = value.getDraft();
     this.draftReason = value.getDraftReason();
   }
@@ -83,6 +86,7 @@ public class BusinessRule implements IBusinessRule {
     String               description,
     BusinessRuleSeverity severity,
     Integer              stage,
+    BusinessRuleTarget   target,
     Boolean              draft,
     String               draftReason
   ) {
@@ -104,6 +108,7 @@ public class BusinessRule implements IBusinessRule {
     this.description = description;
     this.severity = severity;
     this.stage = stage;
+    this.target = target;
     this.draft = draft;
     this.draftReason = draftReason;
   }
@@ -397,6 +402,22 @@ public class BusinessRule implements IBusinessRule {
   }
 
   /**
+   * Getter for <code>business_rule.target</code>. The situation in which the rule should be applied
+   */
+  @Override
+  public BusinessRuleTarget getTarget() {
+    return this.target;
+  }
+
+  /**
+   * Setter for <code>business_rule.target</code>. The situation in which the rule should be applied
+   */
+  @Override
+  public void setTarget(BusinessRuleTarget target) {
+    this.target = target;
+  }
+
+  /**
    * Getter for <code>business_rule.draft</code>. Drafts are excluded from the export
    */
   @Override
@@ -450,6 +471,7 @@ public class BusinessRule implements IBusinessRule {
     sb.append(", ").append(description);
     sb.append(", ").append(severity);
     sb.append(", ").append(stage);
+    sb.append(", ").append(target);
     sb.append(", ").append(draft);
     sb.append(", ").append(draftReason);
 
@@ -481,6 +503,7 @@ public class BusinessRule implements IBusinessRule {
     setDescription(from.getDescription());
     setSeverity(from.getSeverity());
     setStage(from.getStage());
+    setTarget(from.getTarget());
     setDraft(from.getDraft());
     setDraftReason(from.getDraftReason());
   }

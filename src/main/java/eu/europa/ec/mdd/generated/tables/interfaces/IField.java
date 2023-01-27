@@ -69,6 +69,16 @@ public interface IField extends Serializable {
   public FieldType getType();
 
   /**
+   * Setter for <code>field.preset_value</code>.
+   */
+  public void setPresetValue(String value);
+
+  /**
+   * Getter for <code>field.preset_value</code>.
+   */
+  public String getPresetValue();
+
+  /**
    * Setter for <code>field.id_schemes</code>.
    */
   public void setIdSchemes(String value);

@@ -18,6 +18,7 @@ public class DocumentType implements IDocumentType {
   private String id;
   private String namespace;
   private String rootElement;
+  private String schemaLocation;
 
   public DocumentType() {}
 
@@ -25,16 +26,19 @@ public class DocumentType implements IDocumentType {
     this.id = value.getId();
     this.namespace = value.getNamespace();
     this.rootElement = value.getRootElement();
+    this.schemaLocation = value.getSchemaLocation();
   }
 
   public DocumentType(
     String id,
     String namespace,
-    String rootElement
+    String rootElement,
+    String schemaLocation
   ) {
     this.id = id;
     this.namespace = namespace;
     this.rootElement = rootElement;
+    this.schemaLocation = schemaLocation;
   }
 
   /**
@@ -85,6 +89,22 @@ public class DocumentType implements IDocumentType {
     this.rootElement = rootElement;
   }
 
+  /**
+   * Getter for <code>document_type.schema_location</code>. Location of the main xsd file relative to the SDK root folder, no slash at start
+   */
+  @Override
+  public String getSchemaLocation() {
+    return this.schemaLocation;
+  }
+
+  /**
+   * Setter for <code>document_type.schema_location</code>. Location of the main xsd file relative to the SDK root folder, no slash at start
+   */
+  @Override
+  public void setSchemaLocation(String schemaLocation) {
+    this.schemaLocation = schemaLocation;
+  }
+
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder("DocumentType (");
@@ -92,6 +112,7 @@ public class DocumentType implements IDocumentType {
     sb.append(id);
     sb.append(", ").append(namespace);
     sb.append(", ").append(rootElement);
+    sb.append(", ").append(schemaLocation);
 
     sb.append(")");
     return sb.toString();
@@ -106,6 +127,7 @@ public class DocumentType implements IDocumentType {
     setId(from.getId());
     setNamespace(from.getNamespace());
     setRootElement(from.getRootElement());
+    setSchemaLocation(from.getSchemaLocation());
   }
 
   @Override

@@ -15,7 +15,7 @@ import org.jooq.Field;
 import org.jooq.ForeignKey;
 import org.jooq.Name;
 import org.jooq.Record;
-import org.jooq.Row3;
+import org.jooq.Row4;
 import org.jooq.Schema;
 import org.jooq.Table;
 import org.jooq.TableField;
@@ -61,6 +61,11 @@ public class DocumentType extends TableImpl<DocumentTypeRecord> {
    * The column <code>document_type.root_element</code>.
    */
   public final TableField<DocumentTypeRecord, String> ROOT_ELEMENT = createField(DSL.name("root_element"), SQLDataType.VARCHAR(255), this, "");
+
+  /**
+   * The column <code>document_type.schema_location</code>. Location of the main xsd file relative to the SDK root folder, no slash at start
+   */
+  public final TableField<DocumentTypeRecord, String> SCHEMA_LOCATION = createField(DSL.name("schema_location"), SQLDataType.VARCHAR(255).nullable(false), this, "Location of the main xsd file relative to the SDK root folder, no slash at start");
 
   private DocumentType(Name alias, Table<DocumentTypeRecord> aliased) {
     this(alias, aliased, null);
@@ -137,11 +142,11 @@ public class DocumentType extends TableImpl<DocumentTypeRecord> {
   }
 
   // -------------------------------------------------------------------------
-  // Row3 type methods
+  // Row4 type methods
   // -------------------------------------------------------------------------
 
   @Override
-  public Row3<String, String, String> fieldsRow() {
-    return (Row3) super.fieldsRow();
+  public Row4<String, String, String, String> fieldsRow() {
+    return (Row4) super.fieldsRow();
   }
 }

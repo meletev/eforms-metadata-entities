@@ -123,6 +123,20 @@ public class FieldDao extends DAOImpl<FieldRecord, eu.europa.ec.mdd.generated.ta
   }
 
   /**
+   * Fetch records that have <code>preset_value BETWEEN lowerInclusive AND upperInclusive</code>
+   */
+  public List<eu.europa.ec.mdd.generated.tables.pojos.Field> fetchRangeOfPresetValue(String lowerInclusive, String upperInclusive) {
+    return fetchRange(Field.FIELD.PRESET_VALUE, lowerInclusive, upperInclusive);
+  }
+
+  /**
+   * Fetch records that have <code>preset_value IN (values)</code>
+   */
+  public List<eu.europa.ec.mdd.generated.tables.pojos.Field> fetchByPresetValue(String... values) {
+    return fetch(Field.FIELD.PRESET_VALUE, values);
+  }
+
+  /**
    * Fetch records that have <code>id_schemes BETWEEN lowerInclusive AND upperInclusive</code>
    */
   public List<eu.europa.ec.mdd.generated.tables.pojos.Field> fetchRangeOfIdSchemes(String lowerInclusive, String upperInclusive) {
