@@ -12,6 +12,14 @@
   <name>mdd-entities</name>
   <description>eForms Metadata Manager Entities</description>
 
+  <distributionManagement>
+    <repository>
+      <id>github</id>
+      <name>GitHub Packages</name>
+      <url>https://maven.pkg.github.com/OP-TED/eforms-metadata-entities</url>
+    </repository>
+  </distributionManagement>
+
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -48,20 +56,6 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
-
-  <distributionManagement>
-    <repository>
-      <id>op-nexus-repo</id>
-      <name>OP Maven Repository</name>
-      <url>https://webgate.ec.europa.eu/CITnet/nexus/content/repositories/op/</url>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-    </repository>
-  </distributionManagement>
 
   <dependencies>
     <dependency>
