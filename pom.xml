@@ -10,7 +10,7 @@
   <!-- A jar that will be used as library by core module -->
   <packaging>jar</packaging>
   <name>mdd-entities</name>
-  <description>eForms Metadata Manager Entities</description>
+  <description>eForms Metadata Entities</description>
 
   <distributionManagement>
     <repository>
