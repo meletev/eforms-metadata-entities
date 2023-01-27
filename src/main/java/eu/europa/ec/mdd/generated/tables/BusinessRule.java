@@ -9,7 +9,6 @@ import eu.europa.ec.mdd.generated.Indexes;
 import eu.europa.ec.mdd.generated.Keys;
 import eu.europa.ec.mdd.generated.enums.BusinessRuleContext;
 import eu.europa.ec.mdd.generated.enums.BusinessRuleSeverity;
-import eu.europa.ec.mdd.generated.enums.BusinessRuleTarget;
 import eu.europa.ec.mdd.generated.enums.BusinessRuleType;
 import eu.europa.ec.mdd.generated.tables.records.BusinessRuleRecord;
 
@@ -21,7 +20,7 @@ import org.jooq.ForeignKey;
 import org.jooq.Index;
 import org.jooq.Name;
 import org.jooq.Record;
-import org.jooq.Row21;
+import org.jooq.Row20;
 import org.jooq.Schema;
 import org.jooq.Table;
 import org.jooq.TableField;
@@ -142,11 +141,6 @@ public class BusinessRule extends TableImpl<BusinessRuleRecord> {
    * The column <code>business_rule.stage</code>.
    */
   public final TableField<BusinessRuleRecord, Integer> STAGE = createField(DSL.name("stage"), SQLDataType.INTEGER, this, "");
-
-  /**
-   * The column <code>business_rule.target</code>. The situation in which the rule should be applied
-   */
-  public final TableField<BusinessRuleRecord, BusinessRuleTarget> TARGET = createField(DSL.name("target"), SQLDataType.VARCHAR(3).nullable(false).defaultValue(DSL.inline("all", SQLDataType.VARCHAR)).asEnumDataType(eu.europa.ec.mdd.generated.enums.BusinessRuleTarget.class), this, "The situation in which the rule should be applied");
 
   /**
    * The column <code>business_rule.draft</code>. Drafts are excluded from the export
@@ -316,11 +310,11 @@ public class BusinessRule extends TableImpl<BusinessRuleRecord> {
   }
 
   // -------------------------------------------------------------------------
-  // Row21 type methods
+  // Row20 type methods
   // -------------------------------------------------------------------------
 
   @Override
-  public Row21<String, BusinessRuleType, String, String, String, String, Integer, Integer, String, String, Boolean, Boolean, Boolean, BusinessRuleContext, String, String, BusinessRuleSeverity, Integer, BusinessRuleTarget, Boolean, String> fieldsRow() {
-    return (Row21) super.fieldsRow();
+  public Row20<String, BusinessRuleType, String, String, String, String, Integer, Integer, String, String, Boolean, Boolean, Boolean, BusinessRuleContext, String, String, BusinessRuleSeverity, Integer, Boolean, String> fieldsRow() {
+    return (Row20) super.fieldsRow();
   }
 }

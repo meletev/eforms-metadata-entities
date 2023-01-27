@@ -6,7 +6,6 @@ package eu.europa.ec.mdd.generated.tables.interfaces;
 
 import eu.europa.ec.mdd.generated.enums.BusinessRuleContext;
 import eu.europa.ec.mdd.generated.enums.BusinessRuleSeverity;
-import eu.europa.ec.mdd.generated.enums.BusinessRuleTarget;
 import eu.europa.ec.mdd.generated.enums.BusinessRuleType;
 
 import java.io.Serializable;
@@ -197,16 +196,6 @@ public interface IBusinessRule extends Serializable {
    * Getter for <code>business_rule.stage</code>.
    */
   public Integer getStage();
-
-  /**
-   * Setter for <code>business_rule.target</code>. The situation in which the rule should be applied
-   */
-  public void setTarget(BusinessRuleTarget value);
-
-  /**
-   * Getter for <code>business_rule.target</code>. The situation in which the rule should be applied
-   */
-  public BusinessRuleTarget getTarget();
 
   /**
    * Setter for <code>business_rule.draft</code>. Drafts are excluded from the export
