@@ -17,6 +17,9 @@
       <id>github</id>
       <name>GitHub Packages</name>
       <url>https://maven.pkg.github.com/OP-TED/eforms-metadata-entities</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
     </repository>
   </distributionManagement>
 
