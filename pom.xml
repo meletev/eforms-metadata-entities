@@ -5,7 +5,7 @@
 
   <groupId>eu.europa.ted.eforms.mdd</groupId>
   <artifactId>mdd-entities</artifactId>
-  <version>1.5.0</version>
+  <version>1.6.0-SNAPSHOT</version>
 
   <!-- A jar that will be used as library by core module -->
   <packaging>jar</packaging>
