@@ -189,10 +189,11 @@ public class DisplayGroup extends TableImpl<DisplayGroupRecord> {
 
   @Override
   public List<ForeignKey<DisplayGroupRecord, ?>> getReferences() {
-    return Arrays.<ForeignKey<DisplayGroupRecord, ?>>asList(Keys.FK_DISPLAY_GROUP_DISPLAY_GROUP1, Keys.FK_DISPLAY_GROUP_NODE1, Keys.FK_DISPLAY_GROUP_FIELD1);
+    return Arrays.<ForeignKey<DisplayGroupRecord, ?>>asList(Keys.FK_DISPLAY_GROUP_DISPLAY_GROUP1, Keys.FK_DISPLAY_GROUP_NOTICE, Keys.FK_DISPLAY_GROUP_NODE1, Keys.FK_DISPLAY_GROUP_FIELD1);
   }
 
   private transient DisplayGroup _displayGroup;
+  private transient Notice _notice;
   private transient Node _node;
   private transient eu.europa.ec.mdd.generated.tables.Field _field;
 
@@ -201,6 +202,13 @@ public class DisplayGroup extends TableImpl<DisplayGroupRecord> {
       _displayGroup = new DisplayGroup(this, Keys.FK_DISPLAY_GROUP_DISPLAY_GROUP1);
 
     return _displayGroup;
+  }
+
+  public Notice notice() {
+    if (_notice == null)
+      _notice = new Notice(this, Keys.FK_DISPLAY_GROUP_NOTICE);
+
+    return _notice;
   }
 
   public Node node() {

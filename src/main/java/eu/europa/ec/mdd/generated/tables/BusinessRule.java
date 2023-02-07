@@ -121,7 +121,7 @@ public class BusinessRule extends TableImpl<BusinessRuleRecord> {
   /**
    * The column <code>business_rule.context</code>.
    */
-  public final TableField<BusinessRuleRecord, BusinessRuleContext> CONTEXT = createField(DSL.name("context"), SQLDataType.VARCHAR(6).asEnumDataType(eu.europa.ec.mdd.generated.enums.BusinessRuleContext.class), this, "");
+  public final TableField<BusinessRuleRecord, BusinessRuleContext> CONTEXT = createField(DSL.name("context"), SQLDataType.VARCHAR(6).nullable(false).asEnumDataType(eu.europa.ec.mdd.generated.enums.BusinessRuleContext.class), this, "");
 
   /**
    * The column <code>business_rule.context_node</code>.

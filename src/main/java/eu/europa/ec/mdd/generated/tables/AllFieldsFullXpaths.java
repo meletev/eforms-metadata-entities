@@ -78,7 +78,7 @@ public class AllFieldsFullXpaths extends TableImpl<AllFieldsFullXpathsRecord> {
   }
 
   private AllFieldsFullXpaths(Name alias, Table<AllFieldsFullXpathsRecord> aliased, Field<?>[] parameters) {
-    super(alias, null, aliased, parameters, DSL.comment("VIEW"), TableOptions.view("create view `all_fields_full_xpaths` as select `TEDEFO_DEV_MDD_EM`.`field`.`id` AS `id`,`TEDEFO_DEV_MDD_EM`.`field`.`business_term_id` AS `business_term_id`,`TEDEFO_DEV_MDD_EM`.`field`.`description` AS `description`,`TEDEFO_DEV_MDD_EM`.`field`.`relative_path` AS `relative_path`,`TEDEFO_DEV_MDD_EM`.`field`.`type` AS `type`,concat(`GET_XPATH_ABSOLUTE`(`TEDEFO_DEV_MDD_EM`.`field`.`parent_node_id`),'/',`TEDEFO_DEV_MDD_EM`.`field`.`relative_path`) AS `absolute_path` from `TEDEFO_DEV_MDD_EM`.`field`"));
+    super(alias, null, aliased, parameters, DSL.comment("VIEW"), TableOptions.view("create view `all_fields_full_xpaths` as select `TEDEFO_ACC_MDD`.`field`.`id` AS `id`,`TEDEFO_ACC_MDD`.`field`.`business_term_id` AS `business_term_id`,`TEDEFO_ACC_MDD`.`field`.`description` AS `description`,`TEDEFO_ACC_MDD`.`field`.`relative_path` AS `relative_path`,`TEDEFO_ACC_MDD`.`field`.`type` AS `type`,concat(`GET_XPATH_ABSOLUTE`(`TEDEFO_ACC_MDD`.`field`.`parent_node_id`),'/',`TEDEFO_ACC_MDD`.`field`.`relative_path`) AS `absolute_path` from `TEDEFO_ACC_MDD`.`field`"));
   }
 
   /**

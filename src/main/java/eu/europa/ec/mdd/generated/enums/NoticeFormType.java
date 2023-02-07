@@ -15,8 +15,6 @@ import org.jooq.Schema;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public enum NoticeFormType implements EnumType {
 
-  change("change"),
-
   competition("competition"),
 
   cont_modif("cont-modif"),
@@ -29,9 +27,7 @@ public enum NoticeFormType implements EnumType {
 
   completion("completion"),
 
-  bsri("bsri"),
-
-  unknown("unknown");
+  bri("bri");
 
   private final String literal;
 
