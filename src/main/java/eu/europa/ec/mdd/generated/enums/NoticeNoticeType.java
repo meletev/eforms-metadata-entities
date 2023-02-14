@@ -29,8 +29,6 @@ public enum NoticeNoticeType implements EnumType {
 
   cn_standard("cn-standard"),
 
-  corr("corr"),
-
   pin_buyer("pin-buyer"),
 
   pin_cfc_social("pin-cfc-social"),
@@ -50,6 +48,10 @@ public enum NoticeNoticeType implements EnumType {
   brin_ecs("brin-ecs"),
 
   brin_eeig("brin-eeig"),
+
+  pin_tran("pin-tran"),
+
+  can_tran("can-tran"),
 
   unknown("unknown");
 

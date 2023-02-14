@@ -70,7 +70,7 @@ public class Notice extends TableImpl<NoticeRecord> {
   /**
    * The column <code>notice.notice_type</code>.
    */
-  public final TableField<NoticeRecord, NoticeNoticeType> NOTICE_TYPE = createField(DSL.name("notice_type"), SQLDataType.VARCHAR(16).asEnumDataType(eu.europa.ec.mdd.generated.enums.NoticeNoticeType.class), this, "");
+  public final TableField<NoticeRecord, NoticeNoticeType> NOTICE_TYPE = createField(DSL.name("notice_type"), SQLDataType.VARCHAR(16).nullable(false).asEnumDataType(eu.europa.ec.mdd.generated.enums.NoticeNoticeType.class), this, "");
 
   /**
    * The column <code>notice.document_type_id</code>.

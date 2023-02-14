@@ -79,14 +79,14 @@ public interface IField extends Serializable {
   public String getPresetValue();
 
   /**
-   * Setter for <code>field.id_schemes</code>.
+   * Setter for <code>field.identifier_scheme_id</code>.
    */
-  public void setIdSchemes(String value);
+  public void setIdentifierSchemeId(String value);
 
   /**
-   * Getter for <code>field.id_schemes</code>.
+   * Getter for <code>field.identifier_scheme_id</code>.
    */
-  public String getIdSchemes();
+  public String getIdentifierSchemeId();
 
   /**
    * Setter for <code>field.max_length</code>. Maximum number of characters allowed

@@ -68,7 +68,7 @@ public class CountDraftBusinessRules extends TableImpl<CountDraftBusinessRulesRe
   }
 
   private CountDraftBusinessRules(Name alias, Table<CountDraftBusinessRulesRecord> aliased, Field<?>[] parameters) {
-    super(alias, null, aliased, parameters, DSL.comment("VIEW"), TableOptions.view("create view `count_draft_business_rules` as select `TEDEFO_DEV_MDD_EM`.`business_rule`.`type` AS `type`,count((case when (`TEDEFO_DEV_MDD_EM`.`business_rule`.`draft` <> 0) then 1 else NULL end)) AS `draft`,count((case when (`TEDEFO_DEV_MDD_EM`.`business_rule`.`draft` = 0) then 1 else NULL end)) AS `active`,count(0) AS `total` from `TEDEFO_DEV_MDD_EM`.`business_rule` group by `TEDEFO_DEV_MDD_EM`.`business_rule`.`type`"));
+    super(alias, null, aliased, parameters, DSL.comment("VIEW"), TableOptions.view("create view `count_draft_business_rules` as select `TEDEFO_ACC_MDD`.`business_rule`.`type` AS `type`,count((case when (`TEDEFO_ACC_MDD`.`business_rule`.`draft` <> 0) then 1 else NULL end)) AS `draft`,count((case when (`TEDEFO_ACC_MDD`.`business_rule`.`draft` = 0) then 1 else NULL end)) AS `active`,count(0) AS `total` from `TEDEFO_ACC_MDD`.`business_rule` group by `TEDEFO_ACC_MDD`.`business_rule`.`type`"));
   }
 
   /**

@@ -121,18 +121,18 @@ public class FieldRecord extends UpdatableRecordImpl<FieldRecord> implements Rec
   }
 
   /**
-   * Setter for <code>field.id_schemes</code>.
+   * Setter for <code>field.identifier_scheme_id</code>.
    */
   @Override
-  public void setIdSchemes(String value) {
+  public void setIdentifierSchemeId(String value) {
     set(6, value);
   }
 
   /**
-   * Getter for <code>field.id_schemes</code>.
+   * Getter for <code>field.identifier_scheme_id</code>.
    */
   @Override
-  public String getIdSchemes() {
+  public String getIdentifierSchemeId() {
     return (String) get(6);
   }
 
@@ -335,7 +335,7 @@ public class FieldRecord extends UpdatableRecordImpl<FieldRecord> implements Rec
 
   @Override
   public org.jooq.Field<String> field7() {
-    return Field.FIELD.ID_SCHEMES;
+    return Field.FIELD.IDENTIFIER_SCHEME_ID;
   }
 
   @Override
@@ -415,7 +415,7 @@ public class FieldRecord extends UpdatableRecordImpl<FieldRecord> implements Rec
 
   @Override
   public String component7() {
-    return getIdSchemes();
+    return getIdentifierSchemeId();
   }
 
   @Override
@@ -495,7 +495,7 @@ public class FieldRecord extends UpdatableRecordImpl<FieldRecord> implements Rec
 
   @Override
   public String value7() {
-    return getIdSchemes();
+    return getIdentifierSchemeId();
   }
 
   @Override
@@ -581,7 +581,7 @@ public class FieldRecord extends UpdatableRecordImpl<FieldRecord> implements Rec
 
   @Override
   public FieldRecord value7(String value) {
-    setIdSchemes(value);
+    setIdentifierSchemeId(value);
     return this;
   }
 
@@ -672,7 +672,7 @@ public class FieldRecord extends UpdatableRecordImpl<FieldRecord> implements Rec
     setRelativePath(from.getRelativePath());
     setType(from.getType());
     setPresetValue(from.getPresetValue());
-    setIdSchemes(from.getIdSchemes());
+    setIdentifierSchemeId(from.getIdentifierSchemeId());
     setMaxLength(from.getMaxLength());
     setParentNodeId(from.getParentNodeId());
     setRepeatable(from.getRepeatable());
@@ -704,7 +704,7 @@ public class FieldRecord extends UpdatableRecordImpl<FieldRecord> implements Rec
   /**
    * Create a detached, initialised FieldRecord
    */
-  public FieldRecord(String id, String businessTermId, String description, String relativePath, FieldType type, String presetValue, String idSchemes, UInteger maxLength, String parentNodeId, Boolean repeatable, Boolean multilingual, FieldPrivacyCode privacyCode, String privacyUnpublishedFieldId, String privacyReasonCodeFieldId, String privacyReasonDescriptionFieldId, String privacyPublicationDateFieldId) {
+  public FieldRecord(String id, String businessTermId, String description, String relativePath, FieldType type, String presetValue, String identifierSchemeId, UInteger maxLength, String parentNodeId, Boolean repeatable, Boolean multilingual, FieldPrivacyCode privacyCode, String privacyUnpublishedFieldId, String privacyReasonCodeFieldId, String privacyReasonDescriptionFieldId, String privacyPublicationDateFieldId) {
     super(Field.FIELD);
 
     setId(id);
@@ -713,7 +713,7 @@ public class FieldRecord extends UpdatableRecordImpl<FieldRecord> implements Rec
     setRelativePath(relativePath);
     setType(type);
     setPresetValue(presetValue);
-    setIdSchemes(idSchemes);
+    setIdentifierSchemeId(identifierSchemeId);
     setMaxLength(maxLength);
     setParentNodeId(parentNodeId);
     setRepeatable(repeatable);

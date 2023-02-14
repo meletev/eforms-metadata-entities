@@ -56,7 +56,7 @@ public class ViewTemplate extends TableImpl<ViewTemplateRecord> {
   /**
    * The column <code>view_template.template</code>. Contains EFX, starting with the context
    */
-  public final TableField<ViewTemplateRecord, String> TEMPLATE = createField(DSL.name("template"), SQLDataType.VARCHAR(1024).nullable(false), this, "Contains EFX, starting with the context");
+  public final TableField<ViewTemplateRecord, String> TEMPLATE = createField(DSL.name("template"), SQLDataType.VARCHAR(10000).nullable(false), this, "Contains EFX, starting with the context");
 
   /**
    * The column <code>view_template.draft</code>.
