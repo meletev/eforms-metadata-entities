@@ -151,6 +151,20 @@ public class FieldDao extends DAOImpl<FieldRecord, eu.europa.ec.mdd.generated.ta
   }
 
   /**
+   * Fetch records that have <code>caption_field_id BETWEEN lowerInclusive AND upperInclusive</code>
+   */
+  public List<eu.europa.ec.mdd.generated.tables.pojos.Field> fetchRangeOfCaptionFieldId(String lowerInclusive, String upperInclusive) {
+    return fetchRange(Field.FIELD.CAPTION_FIELD_ID, lowerInclusive, upperInclusive);
+  }
+
+  /**
+   * Fetch records that have <code>caption_field_id IN (values)</code>
+   */
+  public List<eu.europa.ec.mdd.generated.tables.pojos.Field> fetchByCaptionFieldId(String... values) {
+    return fetch(Field.FIELD.CAPTION_FIELD_ID, values);
+  }
+
+  /**
    * Fetch records that have <code>max_length BETWEEN lowerInclusive AND upperInclusive</code>
    */
   public List<eu.europa.ec.mdd.generated.tables.pojos.Field> fetchRangeOfMaxLength(UInteger lowerInclusive, UInteger upperInclusive) {
