@@ -11,6 +11,7 @@ import eu.europa.ec.mdd.generated.tables.Code;
 import eu.europa.ec.mdd.generated.tables.CodeListToCode;
 import eu.europa.ec.mdd.generated.tables.DisplayGroup;
 import eu.europa.ec.mdd.generated.tables.Field;
+import eu.europa.ec.mdd.generated.tables.IdentifierReference;
 import eu.europa.ec.mdd.generated.tables.Node;
 import eu.europa.ec.mdd.generated.tables.Notice;
 import eu.europa.ec.mdd.generated.tables.NoticeToView;
@@ -51,6 +52,8 @@ public class Indexes {
   public static final Index DISPLAY_GROUP_FK_DISPLAY_GROUP_FIELD1_IDX1 = Internal.createIndex(DSL.name("fk_display_group_field1_idx1"), DisplayGroup.DISPLAY_GROUP, new OrderField[] { DisplayGroup.DISPLAY_GROUP.FIELD_ID }, false);
   public static final Index DISPLAY_GROUP_FK_DISPLAY_GROUP_NODE1_IDX = Internal.createIndex(DSL.name("fk_display_group_node1_idx"), DisplayGroup.DISPLAY_GROUP, new OrderField[] { DisplayGroup.DISPLAY_GROUP.NODE_ID }, false);
   public static final Index DISPLAY_GROUP_FK_DISPLAY_GROUP_NOTICE1_IDX = Internal.createIndex(DSL.name("fk_display_group_notice1_idx"), DisplayGroup.DISPLAY_GROUP, new OrderField[] { DisplayGroup.DISPLAY_GROUP.NOTICE_ID }, false);
+  public static final Index FIELD_FK_FIELD_ID_SCHEME1_IDX = Internal.createIndex(DSL.name("fk_field_id_scheme1_idx"), Field.FIELD, new OrderField[] { Field.FIELD.IDENTIFIER_SCHEME_ID }, false);
+  public static final Index IDENTIFIER_REFERENCE_FK_ID_REF_FIELD1_IDX = Internal.createIndex(DSL.name("fk_id_ref_field1_idx"), IdentifierReference.IDENTIFIER_REFERENCE, new OrderField[] { IdentifierReference.IDENTIFIER_REFERENCE.FIELD_ID }, false);
   public static final Index NODE_FK_NODE_FIELD1_IDX = Internal.createIndex(DSL.name("fk_node_field1_idx"), Node.NODE, new OrderField[] { Node.NODE.IDENTIFIER_FIELD_ID }, false);
   public static final Index NOTICE_TO_VIEW_FK_NOTICE_TO_VIEW_NOTICE1_IDX = Internal.createIndex(DSL.name("fk_notice_to_view_notice1_idx"), NoticeToView.NOTICE_TO_VIEW, new OrderField[] { NoticeToView.NOTICE_TO_VIEW.NOTICE_ID }, false);
   public static final Index NOTICE_TO_VIEW_FK_NOTICE_TO_VIEW_VIEW1_IDX = Internal.createIndex(DSL.name("fk_notice_to_view_view1_idx"), NoticeToView.NOTICE_TO_VIEW, new OrderField[] { NoticeToView.NOTICE_TO_VIEW.VIEW_ID }, false);

@@ -23,6 +23,8 @@ import eu.europa.ec.mdd.generated.tables.Databasechangeloglock;
 import eu.europa.ec.mdd.generated.tables.DisplayGroup;
 import eu.europa.ec.mdd.generated.tables.DocumentType;
 import eu.europa.ec.mdd.generated.tables.Field;
+import eu.europa.ec.mdd.generated.tables.IdentifierReference;
+import eu.europa.ec.mdd.generated.tables.IdentifierScheme;
 import eu.europa.ec.mdd.generated.tables.Interval;
 import eu.europa.ec.mdd.generated.tables.Label;
 import eu.europa.ec.mdd.generated.tables.Node;
@@ -30,6 +32,8 @@ import eu.europa.ec.mdd.generated.tables.Notice;
 import eu.europa.ec.mdd.generated.tables.NoticeToView;
 import eu.europa.ec.mdd.generated.tables.OldViewTemplate;
 import eu.europa.ec.mdd.generated.tables.Pattern;
+import eu.europa.ec.mdd.generated.tables.SpecialPurposeField;
+import eu.europa.ec.mdd.generated.tables.SpecialPurposeNode;
 import eu.europa.ec.mdd.generated.tables.TedForm;
 import eu.europa.ec.mdd.generated.tables.TedFormNotice;
 import eu.europa.ec.mdd.generated.tables.TedItem;
@@ -159,6 +163,16 @@ public class DefaultSchema extends SchemaImpl {
   public final Field FIELD = Field.FIELD;
 
   /**
+   * The table <code>identifier_reference</code>.
+   */
+  public final IdentifierReference IDENTIFIER_REFERENCE = IdentifierReference.IDENTIFIER_REFERENCE;
+
+  /**
+   * The table <code>identifier_scheme</code>.
+   */
+  public final IdentifierScheme IDENTIFIER_SCHEME = IdentifierScheme.IDENTIFIER_SCHEME;
+
+  /**
    * The table <code>interval</code>.
    */
   public final Interval INTERVAL = Interval.INTERVAL;
@@ -192,6 +206,16 @@ public class DefaultSchema extends SchemaImpl {
    * The table <code>pattern</code>.
    */
   public final Pattern PATTERN = Pattern.PATTERN;
+
+  /**
+   * The table <code>special_purpose_field</code>.
+   */
+  public final SpecialPurposeField SPECIAL_PURPOSE_FIELD = SpecialPurposeField.SPECIAL_PURPOSE_FIELD;
+
+  /**
+   * The table <code>special_purpose_node</code>.
+   */
+  public final SpecialPurposeNode SPECIAL_PURPOSE_NODE = SpecialPurposeNode.SPECIAL_PURPOSE_NODE;
 
   /**
    * Standard forms in old TED XML schemas
@@ -283,6 +307,8 @@ public class DefaultSchema extends SchemaImpl {
       DisplayGroup.DISPLAY_GROUP,
       DocumentType.DOCUMENT_TYPE,
       Field.FIELD,
+      IdentifierReference.IDENTIFIER_REFERENCE,
+      IdentifierScheme.IDENTIFIER_SCHEME,
       Interval.INTERVAL,
       Label.LABEL,
       Node.NODE,
@@ -290,6 +316,8 @@ public class DefaultSchema extends SchemaImpl {
       NoticeToView.NOTICE_TO_VIEW,
       OldViewTemplate.OLD_VIEW_TEMPLATE,
       Pattern.PATTERN,
+      SpecialPurposeField.SPECIAL_PURPOSE_FIELD,
+      SpecialPurposeNode.SPECIAL_PURPOSE_NODE,
       TedForm.TED_FORM,
       TedFormNotice.TED_FORM_NOTICE,
       TedItem.TED_ITEM,

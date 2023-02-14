@@ -137,17 +137,17 @@ public class FieldDao extends DAOImpl<FieldRecord, eu.europa.ec.mdd.generated.ta
   }
 
   /**
-   * Fetch records that have <code>id_schemes BETWEEN lowerInclusive AND upperInclusive</code>
+   * Fetch records that have <code>identifier_scheme_id BETWEEN lowerInclusive AND upperInclusive</code>
    */
-  public List<eu.europa.ec.mdd.generated.tables.pojos.Field> fetchRangeOfIdSchemes(String lowerInclusive, String upperInclusive) {
-    return fetchRange(Field.FIELD.ID_SCHEMES, lowerInclusive, upperInclusive);
+  public List<eu.europa.ec.mdd.generated.tables.pojos.Field> fetchRangeOfIdentifierSchemeId(String lowerInclusive, String upperInclusive) {
+    return fetchRange(Field.FIELD.IDENTIFIER_SCHEME_ID, lowerInclusive, upperInclusive);
   }
 
   /**
-   * Fetch records that have <code>id_schemes IN (values)</code>
+   * Fetch records that have <code>identifier_scheme_id IN (values)</code>
    */
-  public List<eu.europa.ec.mdd.generated.tables.pojos.Field> fetchByIdSchemes(String... values) {
-    return fetch(Field.FIELD.ID_SCHEMES, values);
+  public List<eu.europa.ec.mdd.generated.tables.pojos.Field> fetchByIdentifierSchemeId(String... values) {
+    return fetch(Field.FIELD.IDENTIFIER_SCHEME_ID, values);
   }
 
   /**

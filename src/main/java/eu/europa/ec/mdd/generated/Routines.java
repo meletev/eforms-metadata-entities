@@ -22,7 +22,6 @@ import eu.europa.ec.mdd.generated.routines.GetXpathAbsolute;
 import eu.europa.ec.mdd.generated.routines.IsAncestor;
 import eu.europa.ec.mdd.generated.routines.IsFieldRepeatable;
 import eu.europa.ec.mdd.generated.routines.IsNodeRepeatable;
-import eu.europa.ec.mdd.generated.routines.Pmdgetstructureidpath;
 import eu.europa.ec.mdd.generated.routines.SplitStr;
 
 import org.jooq.Configuration;
@@ -427,22 +426,6 @@ public class Routines {
     f.setNodeId(nodeId);
 
     return f.asField();
-  }
-
-  /**
-   * Call <code>pmdgetstructureidpath</code>
-   */
-  public static String pmdgetstructureidpath(
-      Configuration configuration
-    , String structureId
-    , String rootId
-  ) {
-    Pmdgetstructureidpath p = new Pmdgetstructureidpath();
-    p.setStructureId(structureId);
-    p.setRootId(rootId);
-
-    p.execute(configuration);
-    return p.getPath();
   }
 
   /**

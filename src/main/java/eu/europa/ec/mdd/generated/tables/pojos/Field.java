@@ -25,7 +25,7 @@ public class Field implements IField {
   private String           relativePath;
   private FieldType        type;
   private String           presetValue;
-  private String           idSchemes;
+  private String           identifierSchemeId;
   private UInteger         maxLength;
   private String           parentNodeId;
   private Boolean          repeatable;
@@ -45,7 +45,7 @@ public class Field implements IField {
     this.relativePath = value.getRelativePath();
     this.type = value.getType();
     this.presetValue = value.getPresetValue();
-    this.idSchemes = value.getIdSchemes();
+    this.identifierSchemeId = value.getIdentifierSchemeId();
     this.maxLength = value.getMaxLength();
     this.parentNodeId = value.getParentNodeId();
     this.repeatable = value.getRepeatable();
@@ -64,7 +64,7 @@ public class Field implements IField {
     String           relativePath,
     FieldType        type,
     String           presetValue,
-    String           idSchemes,
+    String           identifierSchemeId,
     UInteger         maxLength,
     String           parentNodeId,
     Boolean          repeatable,
@@ -81,7 +81,7 @@ public class Field implements IField {
     this.relativePath = relativePath;
     this.type = type;
     this.presetValue = presetValue;
-    this.idSchemes = idSchemes;
+    this.identifierSchemeId = identifierSchemeId;
     this.maxLength = maxLength;
     this.parentNodeId = parentNodeId;
     this.repeatable = repeatable;
@@ -190,19 +190,19 @@ public class Field implements IField {
   }
 
   /**
-   * Getter for <code>field.id_schemes</code>.
+   * Getter for <code>field.identifier_scheme_id</code>.
    */
   @Override
-  public String getIdSchemes() {
-    return this.idSchemes;
+  public String getIdentifierSchemeId() {
+    return this.identifierSchemeId;
   }
 
   /**
-   * Setter for <code>field.id_schemes</code>.
+   * Setter for <code>field.identifier_scheme_id</code>.
    */
   @Override
-  public void setIdSchemes(String idSchemes) {
-    this.idSchemes = idSchemes;
+  public void setIdentifierSchemeId(String identifierSchemeId) {
+    this.identifierSchemeId = identifierSchemeId;
   }
 
   /**
@@ -359,7 +359,7 @@ public class Field implements IField {
     sb.append(", ").append(relativePath);
     sb.append(", ").append(type);
     sb.append(", ").append(presetValue);
-    sb.append(", ").append(idSchemes);
+    sb.append(", ").append(identifierSchemeId);
     sb.append(", ").append(maxLength);
     sb.append(", ").append(parentNodeId);
     sb.append(", ").append(repeatable);
@@ -386,7 +386,7 @@ public class Field implements IField {
     setRelativePath(from.getRelativePath());
     setType(from.getType());
     setPresetValue(from.getPresetValue());
-    setIdSchemes(from.getIdSchemes());
+    setIdentifierSchemeId(from.getIdentifierSchemeId());
     setMaxLength(from.getMaxLength());
     setParentNodeId(from.getParentNodeId());
     setRepeatable(from.getRepeatable());

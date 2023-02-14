@@ -82,9 +82,9 @@ public class Field extends TableImpl<FieldRecord> {
   public final TableField<FieldRecord, String> PRESET_VALUE = createField(DSL.name("preset_value"), SQLDataType.VARCHAR(1024), this, "");
 
   /**
-   * The column <code>field.id_schemes</code>.
+   * The column <code>field.identifier_scheme_id</code>.
    */
-  public final TableField<FieldRecord, String> ID_SCHEMES = createField(DSL.name("id_schemes"), SQLDataType.VARCHAR(255), this, "");
+  public final TableField<FieldRecord, String> IDENTIFIER_SCHEME_ID = createField(DSL.name("identifier_scheme_id"), SQLDataType.VARCHAR(255), this, "");
 
   /**
    * The column <code>field.max_length</code>. Maximum number of characters allowed
@@ -171,7 +171,7 @@ public class Field extends TableImpl<FieldRecord> {
 
   @Override
   public List<Index> getIndexes() {
-    return Arrays.<Index>asList(Indexes.FIELD_BUSINESS_TERM_ID);
+    return Arrays.<Index>asList(Indexes.FIELD_BUSINESS_TERM_ID, Indexes.FIELD_FK_FIELD_ID_SCHEME1_IDX);
   }
 
   @Override
@@ -186,10 +186,11 @@ public class Field extends TableImpl<FieldRecord> {
 
   @Override
   public List<ForeignKey<FieldRecord, ?>> getReferences() {
-    return Arrays.<ForeignKey<FieldRecord, ?>>asList(Keys.FIELD_IBFK_1, Keys.PARENT_NODE_ID_IBFK_2);
+    return Arrays.<ForeignKey<FieldRecord, ?>>asList(Keys.FIELD_IBFK_1, Keys.FK_FIELD_ID_SCHEME1, Keys.PARENT_NODE_ID_IBFK_2);
   }
 
   private transient BusinessTerm _businessTerm;
+  private transient IdentifierScheme _identifierScheme;
   private transient Node _node;
 
   public BusinessTerm businessTerm() {
@@ -197,6 +198,13 @@ public class Field extends TableImpl<FieldRecord> {
       _businessTerm = new BusinessTerm(this, Keys.FIELD_IBFK_1);
 
     return _businessTerm;
+  }
+
+  public IdentifierScheme identifierScheme() {
+    if (_identifierScheme == null)
+      _identifierScheme = new IdentifierScheme(this, Keys.FK_FIELD_ID_SCHEME1);
+
+    return _identifierScheme;
   }
 
   public Node node() {
