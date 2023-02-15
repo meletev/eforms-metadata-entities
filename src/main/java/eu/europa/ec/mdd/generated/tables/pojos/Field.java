@@ -26,6 +26,7 @@ public class Field implements IField {
   private FieldType        type;
   private String           presetValue;
   private String           identifierSchemeId;
+  private String           captionFieldId;
   private UInteger         maxLength;
   private String           parentNodeId;
   private Boolean          repeatable;
@@ -46,6 +47,7 @@ public class Field implements IField {
     this.type = value.getType();
     this.presetValue = value.getPresetValue();
     this.identifierSchemeId = value.getIdentifierSchemeId();
+    this.captionFieldId = value.getCaptionFieldId();
     this.maxLength = value.getMaxLength();
     this.parentNodeId = value.getParentNodeId();
     this.repeatable = value.getRepeatable();
@@ -65,6 +67,7 @@ public class Field implements IField {
     FieldType        type,
     String           presetValue,
     String           identifierSchemeId,
+    String           captionFieldId,
     UInteger         maxLength,
     String           parentNodeId,
     Boolean          repeatable,
@@ -82,6 +85,7 @@ public class Field implements IField {
     this.type = type;
     this.presetValue = presetValue;
     this.identifierSchemeId = identifierSchemeId;
+    this.captionFieldId = captionFieldId;
     this.maxLength = maxLength;
     this.parentNodeId = parentNodeId;
     this.repeatable = repeatable;
@@ -203,6 +207,22 @@ public class Field implements IField {
   @Override
   public void setIdentifierSchemeId(String identifierSchemeId) {
     this.identifierSchemeId = identifierSchemeId;
+  }
+
+  /**
+   * Getter for <code>field.caption_field_id</code>.
+   */
+  @Override
+  public String getCaptionFieldId() {
+    return this.captionFieldId;
+  }
+
+  /**
+   * Setter for <code>field.caption_field_id</code>.
+   */
+  @Override
+  public void setCaptionFieldId(String captionFieldId) {
+    this.captionFieldId = captionFieldId;
   }
 
   /**
@@ -360,6 +380,7 @@ public class Field implements IField {
     sb.append(", ").append(type);
     sb.append(", ").append(presetValue);
     sb.append(", ").append(identifierSchemeId);
+    sb.append(", ").append(captionFieldId);
     sb.append(", ").append(maxLength);
     sb.append(", ").append(parentNodeId);
     sb.append(", ").append(repeatable);
@@ -387,6 +408,7 @@ public class Field implements IField {
     setType(from.getType());
     setPresetValue(from.getPresetValue());
     setIdentifierSchemeId(from.getIdentifierSchemeId());
+    setCaptionFieldId(from.getCaptionFieldId());
     setMaxLength(from.getMaxLength());
     setParentNodeId(from.getParentNodeId());
     setRepeatable(from.getRepeatable());

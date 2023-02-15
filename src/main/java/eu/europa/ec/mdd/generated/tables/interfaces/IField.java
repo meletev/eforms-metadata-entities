@@ -89,6 +89,16 @@ public interface IField extends Serializable {
   public String getIdentifierSchemeId();
 
   /**
+   * Setter for <code>field.caption_field_id</code>.
+   */
+  public void setCaptionFieldId(String value);
+
+  /**
+   * Getter for <code>field.caption_field_id</code>.
+   */
+  public String getCaptionFieldId();
+
+  /**
    * Setter for <code>field.max_length</code>. Maximum number of characters allowed
    */
   public void setMaxLength(UInteger value);

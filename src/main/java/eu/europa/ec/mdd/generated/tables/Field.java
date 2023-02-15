@@ -18,7 +18,7 @@ import org.jooq.ForeignKey;
 import org.jooq.Index;
 import org.jooq.Name;
 import org.jooq.Record;
-import org.jooq.Row16;
+import org.jooq.Row17;
 import org.jooq.Schema;
 import org.jooq.Table;
 import org.jooq.TableField;
@@ -85,6 +85,11 @@ public class Field extends TableImpl<FieldRecord> {
    * The column <code>field.identifier_scheme_id</code>.
    */
   public final TableField<FieldRecord, String> IDENTIFIER_SCHEME_ID = createField(DSL.name("identifier_scheme_id"), SQLDataType.VARCHAR(255), this, "");
+
+  /**
+   * The column <code>field.caption_field_id</code>.
+   */
+  public final TableField<FieldRecord, String> CAPTION_FIELD_ID = createField(DSL.name("caption_field_id"), SQLDataType.VARCHAR(255), this, "");
 
   /**
    * The column <code>field.max_length</code>. Maximum number of characters allowed
@@ -186,11 +191,12 @@ public class Field extends TableImpl<FieldRecord> {
 
   @Override
   public List<ForeignKey<FieldRecord, ?>> getReferences() {
-    return Arrays.<ForeignKey<FieldRecord, ?>>asList(Keys.FIELD_IBFK_1, Keys.FK_FIELD_ID_SCHEME1, Keys.PARENT_NODE_ID_IBFK_2);
+    return Arrays.<ForeignKey<FieldRecord, ?>>asList(Keys.FIELD_IBFK_1, Keys.FK_FIELD_ID_SCHEME1, Keys.CAPTION_FIELD_ID_IBFK_3, Keys.PARENT_NODE_ID_IBFK_2);
   }
 
   private transient BusinessTerm _businessTerm;
   private transient IdentifierScheme _identifierScheme;
+  private transient Field _field;
   private transient Node _node;
 
   public BusinessTerm businessTerm() {
@@ -205,6 +211,13 @@ public class Field extends TableImpl<FieldRecord> {
       _identifierScheme = new IdentifierScheme(this, Keys.FK_FIELD_ID_SCHEME1);
 
     return _identifierScheme;
+  }
+
+  public Field field() {
+    if (_field == null)
+      _field = new Field(this, Keys.CAPTION_FIELD_ID_IBFK_3);
+
+    return _field;
   }
 
   public Node node() {
@@ -241,11 +254,11 @@ public class Field extends TableImpl<FieldRecord> {
   }
 
   // -------------------------------------------------------------------------
-  // Row16 type methods
+  // Row17 type methods
   // -------------------------------------------------------------------------
 
   @Override
-  public Row16<String, String, String, String, FieldType, String, String, UInteger, String, Boolean, Boolean, FieldPrivacyCode, String, String, String, String> fieldsRow() {
-    return (Row16) super.fieldsRow();
+  public Row17<String, String, String, String, FieldType, String, String, String, UInteger, String, Boolean, Boolean, FieldPrivacyCode, String, String, String, String> fieldsRow() {
+    return (Row17) super.fieldsRow();
   }
 }
